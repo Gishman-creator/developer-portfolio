@@ -1,0 +1,150 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to dark charcoal background and light gray text */
+  --background: #1e1e1e;
+  --foreground: #d0d0d0;
+  --card: #2a2a2a;
+  --card-foreground: #d0d0d0;
+  --popover: #2a2a2a;
+  --popover-foreground: #d0d0d0;
+  /* Updated primary color to golden yellow #DAB71F */
+  --primary: #dab71f;
+  --primary-foreground: #1e1e1e;
+  --secondary: #333333;
+  --secondary-foreground: #d0d0d0;
+  --muted: #333333;
+  --muted-foreground: #a0a0a0;
+  /* Updated accent color to cyan #4DD0E1 */
+  --accent: #4dd0e1;
+  --accent-foreground: #1e1e1e;
+  --destructive: #e74c3c;
+  --destructive-foreground: #d0d0d0;
+  --border: #404040;
+  --input: #333333;
+  /* Updated ring color to match primary */
+  --ring: #dab71f;
+  --chart-1: #dab71f;
+  --chart-2: #6b8dd6;
+  --chart-3: #8e8e93;
+  --chart-4: #5ac8fa;
+  --chart-5: #34c759;
+  --radius: 0.5rem;
+  --sidebar: #2a2a2a;
+  --sidebar-foreground: #d0d0d0;
+  /* Updated sidebar primary to match new primary color */
+  --sidebar-primary: #dab71f;
+  --sidebar-primary-foreground: #1e1e1e;
+  /* Updated sidebar accent to match new accent color */
+  --sidebar-accent: #4dd0e1;
+  --sidebar-accent-foreground: #1e1e1e;
+  --sidebar-border: #404040;
+  /* Updated sidebar ring to match primary */
+  --sidebar-ring: #dab71f;
+}
+
+@theme inline {
+  /* Added Open Sans and Chewy fonts */
+  --font-sans: var(--font-open-sans);
+  --font-display: var(--font-chewy);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* Headers use display font (Chewy) */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Updated scrollbar colors for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  /* Updated scrollbar hover color to match primary */
+  background: #dab71f;
+}
+
+/* Minimal hover effects - no shadows, just subtle color changes */
+.minimal-hover {
+  transition: all 0.2s ease;
+}
+
+.minimal-hover:hover {
+  border-color: var(--primary);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.minimal-hover-border:hover {
+  border-color: var(--primary);
+}
+
+.minimal-hover-bg:hover {
+  background-color: var(--muted);
+}
