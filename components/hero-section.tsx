@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import Image from "next/image"
 
 const PencilGithubIcon = () => (
   <svg
@@ -85,13 +86,14 @@ export function HeroSection() {
           <div className="flex-shrink-0 text-center lg:text-left">
             {/* Avatar */}
             <div className="mb-6">
-              <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border-2 border-primary/30 flex items-center justify-center mx-auto lg:mx-0 mb-4 relative">
-                <span className="text-6xl lg:text-7xl font-bold text-primary font-display">MC</span>
-                <div className="absolute -bottom-2 -right-2">
-                  <Badge variant="secondary" className="bg-green-500/10 text-green-400 border-green-500/20">
-                    Available
-                  </Badge>
-                </div>
+              <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 border-2 border-primary/30 flex items-center justify-center mx-auto lg:mx-0 mb-4">
+                <Image
+                  src="/logo.png"
+                  alt="MUGISHA Clement"
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                />
               </div>
             </div>
 
@@ -104,7 +106,7 @@ export function HeroSection() {
                   href="https://github.com/mugishaclement"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors minimal-hover-border p-2 rounded-lg border border-transparent"
+                  className="text-muted-foreground hover:text-primary transition-colors minimal-hover-border p-2 rounded-lg border-none hover:border-none"
                   title="GitHub"
                 >
                   <PencilGithubIcon />
@@ -113,14 +115,14 @@ export function HeroSection() {
                   href="https://linkedin.com/in/mugishaclement"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors minimal-hover-border p-2 rounded-lg border border-transparent"
+                  className="text-muted-foreground hover:text-primary transition-colors minimal-hover-border p-2 rounded-lg border-none hover:border-none"
                   title="LinkedIn"
                 >
                   <PencilLinkedinIcon />
                 </a>
                 <a
                   href="mailto:clement@example.com"
-                  className="text-muted-foreground hover:text-primary transition-colors minimal-hover-border p-2 rounded-lg border border-transparent"
+                  className="text-muted-foreground hover:text-primary transition-colors minimal-hover-border p-2 rounded-lg border-none hover:border-none"
                   title="Email"
                 >
                   <PencilMailIcon />
@@ -129,7 +131,7 @@ export function HeroSection() {
                   href="https://twitter.com/mugishaclement"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors minimal-hover-border p-2 rounded-lg border border-transparent"
+                  className="text-muted-foreground hover:text-primary transition-colors minimal-hover-border p-2 rounded-lg border-none hover:border-none"
                   title="Twitter"
                 >
                   <PencilTwitterIcon />
@@ -140,12 +142,6 @@ export function HeroSection() {
 
           {/* Content Section - Right on desktop */}
           <div className="flex-1 text-center lg:text-left lg:max-w-2xl">
-            {/* Greeting */}
-            <div className="mb-6">
-              <Badge variant="outline" className="mb-4 text-primary border-primary/30 bg-primary/5">
-                Hey! I'm a Full Stack Developer
-              </Badge>
-            </div>
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance font-display">
@@ -157,19 +153,6 @@ export function HeroSection() {
               Code, bugs, and late-night coffee keep it all running. I turn complex problems into clean, working
               solutions across web, mobile, and cloud infrastructure.
             </p>
-
-            {/* Specialties */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
-              <Badge variant="secondary" className="bg-secondary/50 text-foreground border-border">
-                Full Stack Development
-              </Badge>
-              <Badge variant="secondary" className="bg-secondary/50 text-foreground border-border">
-                Mobile Development
-              </Badge>
-              <Badge variant="secondary" className="bg-secondary/50 text-foreground border-border">
-                DevOps & Cloud
-              </Badge>
-            </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <Button
@@ -183,7 +166,6 @@ export function HeroSection() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="minimal-hover-border border-2 border-border text-foreground bg-transparent"
               >
                 <a href="#projects">View My Work</a>
               </Button>

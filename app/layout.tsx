@@ -16,7 +16,10 @@ const chewy = Chewy({
 export const metadata = {
   title: "MUGISHA Clement - Full Stack Developer",
   description: "Full Stack Web & Mobile Developer specializing in modern technologies and DevOps",
-    generator: 'v0.app'
+  generator: 'v0.app',
+  icons: {
+    icon: '/favicon_1.png',
+  },
 }
 
 export default function RootLayout({

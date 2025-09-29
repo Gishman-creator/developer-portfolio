@@ -94,7 +94,7 @@ export function ReviewsSection() {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {stats.map((stat, index) => (
-            <Card key={index} className="bg-primary/5 border-primary/20 text-center">
+            <Card key={index} className="bg-secondary/20 border-secondary/40 text-center">
               <CardContent className="pt-6 pb-6">
                 <div className="text-2xl sm:text-3xl font-bold text-primary mb-2">{stat.value}</div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
@@ -124,11 +124,6 @@ export function ReviewsSection() {
                 {/* Review Text */}
                 <p className="text-muted-foreground text-pretty leading-relaxed">"{review.review}"</p>
 
-                {/* Project Badge */}
-                <Badge variant="outline" className="text-xs bg-muted/50">
-                  {review.project}
-                </Badge>
-
                 {/* Reviewer Info */}
                 <div className="flex items-center gap-3 pt-4 border-t border-border">
                   <img
@@ -151,7 +146,7 @@ export function ReviewsSection() {
 
         {/* CTA Section */}
         <div className="mt-16 text-center">
-          <Card className="bg-primary/5 border-primary/20 max-w-2xl mx-auto">
+          <Card className="bg-accent/5 border-accent/20 max-w-2xl mx-auto">
             <CardContent className="pt-8 pb-8">
               <h3 className="text-2xl font-semibold text-foreground mb-4">Ready to Work Together?</h3>
               <p className="text-muted-foreground mb-6 text-pretty">

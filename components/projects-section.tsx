@@ -210,7 +210,7 @@ export function ProjectsSection() {
 
         {/* CTA Section */}
         <div className="mt-16 text-center">
-          <Card className="bg-primary/5 border-primary/20 max-w-2xl mx-auto">
+          <Card className="bg-accent/5 border-accent/20 max-w-2xl mx-auto">
             <CardContent className="pt-8 pb-8">
               <h3 className="text-2xl font-semibold text-foreground mb-4">Want to See More?</h3>
               <p className="text-muted-foreground mb-6 text-pretty">

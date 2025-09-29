@@ -73,19 +73,6 @@ export function SkillsSection() {
             ))}
           </CardContent>
         </Card>
-
-        {/* Additional Info */}
-        <div className="mt-16 text-center">
-          <Card className="bg-primary/5 border-primary/20 max-w-2xl mx-auto">
-            <CardContent className="pt-6">
-              <h3 className="text-xl font-semibold text-foreground mb-3 font-display">Always Learning</h3>
-              <p className="text-muted-foreground text-pretty">
-                Technology evolves rapidly, and so do I. Currently exploring AI/ML integration, Web3 technologies, and
-                advanced cloud-native architectures to stay ahead of the curve.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </section>
   )

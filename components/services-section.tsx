@@ -27,31 +27,7 @@ const services = [
       "Complete CI/CD pipelines, cloud infrastructure setup, and deployment automation. Scale your applications with confidence.",
     features: ["AWS/GCP Setup", "Docker & Kubernetes", "CI/CD Pipelines", "Monitoring & Logging"],
     price: "Starting at $1,500",
-  },
-  {
-    icon: Database,
-    title: "Database Architecture",
-    description:
-      "Robust database design and optimization for high-performance applications. From SQL to NoSQL solutions.",
-    features: ["Database Design", "Query Optimization", "Data Migration", "Backup Strategies"],
-    price: "Starting at $1,200",
-  },
-  {
-    icon: Zap,
-    title: "Performance Optimization",
-    description:
-      "Speed up your existing applications with advanced optimization techniques. Better performance means better user experience.",
-    features: ["Code Optimization", "Caching Strategies", "Load Balancing", "Performance Monitoring"],
-    price: "Starting at $800",
-  },
-  {
-    icon: Shield,
-    title: "Security Audits",
-    description:
-      "Comprehensive security assessments and implementation of best practices to protect your applications and data.",
-    features: ["Security Assessment", "Vulnerability Testing", "Authentication Systems", "Data Protection"],
-    price: "Starting at $1,000",
-  },
+  }
 ]
 
 export function ServicesSection() {
@@ -77,14 +53,6 @@ export function ServicesSection() {
                 className="bg-card border-border hover:border-primary/20 transition-all duration-300 hover:shadow-lg group"
               >
                 <CardHeader>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                      <IconComponent className="w-6 h-6 text-primary" />
-                    </div>
-                    <Badge variant="outline" className="text-xs">
-                      {service.price}
-                    </Badge>
-                  </div>
                   <CardTitle className="text-xl font-semibold text-foreground text-balance">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -114,7 +82,7 @@ export function ServicesSection() {
 
         {/* CTA Section */}
         <div className="mt-16 text-center">
-          <Card className="bg-primary/5 border-primary/20 max-w-3xl mx-auto">
+          <Card className="bg-accent/5 border-accent/20 max-w-3xl mx-auto">
             <CardContent className="pt-8 pb-8">
               <h3 className="text-2xl font-semibold text-foreground mb-4">Need Something Custom?</h3>
               <p className="text-muted-foreground mb-6 text-pretty">
