@@ -6,19 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { 
-  BarChart3, 
-  FolderPlus, 
-  Mail, 
-  MessageSquare, 
-  Plus, 
-  Settings, 
-  Users,
-  LogOut,
-  Eye,
-  Trash2,
-  Edit
-} from "lucide-react"
+import { ChartBar as BarChart3, FolderPlus, Mail, MessageSquare, Plus, Settings, Users, LogOut, Eye, Trash2, CreditCard as Edit } from "lucide-react"
 import { ProjectsTab } from "@/components/admin/projects-tab"
 import { ContactsTab } from "@/components/admin/contacts-tab"
 import { AddProjectDialog } from "@/components/admin/add-project-dialog"

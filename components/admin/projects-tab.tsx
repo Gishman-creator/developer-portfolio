@@ -12,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Edit, Trash2, ExternalLink, Eye } from "lucide-react"
+import { CreditCard as Edit, Trash2, ExternalLink, Eye } from "lucide-react"
 
 // Mock projects data
 const mockProjects = [

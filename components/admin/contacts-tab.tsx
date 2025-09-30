@@ -12,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Mail, MessageSquare, Trash2, Clock, CheckCircle } from "lucide-react"
+import { Mail, MessageSquare, Trash2, Clock, CircleCheck as CheckCircle } from "lucide-react"
 
 // Mock contact messages data
 const mockContacts = [
