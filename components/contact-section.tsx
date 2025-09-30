@@ -211,7 +211,24 @@ export function ContactSection() {
 
         {/* Footer */}
         <div className="mt-16 pt-8 border-t border-border text-center">
-          <p className="text-muted-foreground text-sm">© 2025 MUGISHA Clement. Built with Next.js and Tailwind CSS.</p>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-muted-foreground text-sm">© 2025 MUGISHA Clement. Built with Next.js and Tailwind CSS.</p>
+            <div className="flex items-center gap-4">
+              <a 
+                href="/admin/login" 
+                className="text-muted-foreground hover:text-primary text-sm transition-colors"
+              >
+                Admin Login
+              </a>
+              <span className="text-muted-foreground">•</span>
+              <a 
+                href="/admin/dashboard" 
+                className="text-muted-foreground hover:text-primary text-sm transition-colors"
+              >
+                Dashboard
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
