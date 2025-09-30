@@ -79,9 +79,9 @@ const PencilTwitterIcon = () => (
 
 export function HeroSection() {
   return (
-    <section id="about" className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8 pt-16">
+    <section id="about" className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8 pt-20">
       <div className="max-w-7xl mx-auto w-full">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-evenly gap-12 lg:gap-16">
           {/* Profile Section - Left on desktop, top on mobile */}
           <div className="flex-shrink-0 text-center lg:text-left">
             {/* Avatar */}
@@ -141,7 +141,7 @@ export function HeroSection() {
           </div>
 
           {/* Content Section - Right on desktop */}
-          <div className="flex-1 text-center lg:text-left lg:max-w-2xl">
+          <div className="flex-1 text-center lg:text-left lg:max-w-2xl bg-red-50">
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance font-display">
