@@ -1,0 +1,7 @@
+- [ ] Read the `image-gallery-modal.tsx` file.
+- [ ] Analyze the current structure of the modal component.
+- [ ] Implement changes to make the modal full screen.
+- [ ] Implement changes to add a header.
+- [ ] Implement changes to set the image height to 80% and maintain its aspect ratio for width.
+- [ ] Verify the changes.
+- [ ] Present the updated code.

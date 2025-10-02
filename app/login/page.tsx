@@ -26,7 +26,7 @@ export default function AdminLogin() {
     if (email === "admin@mugisha.dev" && password === "admin123") {
       // Store login state in localStorage (mock session)
       localStorage.setItem("adminLoggedIn", "true")
-      router.push("/admin/dashboard")
+      router.push("/dashboard")
     } else {
       setError("Invalid email or password")
     }

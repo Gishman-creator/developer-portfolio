@@ -54,7 +54,7 @@ export function Navigation() {
                   href={item.href}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     activeSection === item.href.slice(1)
-                      ? "text-primary bg-primary/10"
+                      ? "text-primary bg-[#313131]"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   }`}
                 >

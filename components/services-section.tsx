@@ -70,8 +70,8 @@ export function ServicesSection() {
                     </ul>
                   </div>
 
-                  <Button variant="outline" className="w-full group/btn bg-transparent">
-                    <span>Learn More</span>
+                  <Button variant="outline" className="w-full group/btn bg-transparent hover:border-white/10 hover:text-white hover:bg-white/5">
+                    <span>Contact</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                   </Button>
                 </CardContent>
@@ -93,7 +93,7 @@ export function ServicesSection() {
                 <Button size="lg" asChild>
                   <a href="#contact">Get Custom Quote</a>
                 </Button>
-                <Button variant="outline" size="lg" asChild>
+                <Button variant="outline" size="lg" className="hover:text-white hover:bg-[#272727]" asChild>
                   <a href="#projects">View Past Work</a>
                 </Button>
               </div>

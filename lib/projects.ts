@@ -6,16 +6,15 @@ export const projects = [
       "A comprehensive platform for tracking and managing environmental impact across organizations. Features real-time analytics, carbon footprint calculations, and sustainability reporting.",
     image: "/modern-sustainability-dashboard-with-charts-and-gr.jpg",
     images: [
-      "/modern-sustainability-dashboard-with-charts-and-gr.jpg",
-      "/ecotrack-dashboard.jpg",
-      "/ecotrack-mobile.jpg",
-      "/ecotrack-analytics.jpg",
+      "https://images.unsplash.com/photo-1487338875411-8880f74114a2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHdlYiUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1683147638125-fd31a506a429?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww",
+      "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww",
+      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww",
     ],
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Tailwind CSS", "Chart.js"],
     category: "Full Stack Web",
     year: "2024",
     team: "Solo Project",
-    highlights: ["50% reduction in reporting time", "10k+ users", "Real-time analytics"],
     detailedDescription:
       "EcoTrack revolutionizes how organizations monitor and manage their environmental impact. Built with modern web technologies, it provides comprehensive sustainability tracking with real-time data visualization, automated reporting, and actionable insights for reducing carbon footprint.",
     features: [
@@ -25,11 +24,6 @@ export const projects = [
       "Multi-organization support",
       "API integrations with IoT sensors",
       "Compliance monitoring and alerts",
-    ],
-    challenges: [
-      "Processing large volumes of environmental data in real-time",
-      "Creating intuitive visualizations for complex sustainability metrics",
-      "Ensuring data accuracy across multiple data sources",
     ],
     links: {
       live: "https://ecotrack-demo.vercel.app",

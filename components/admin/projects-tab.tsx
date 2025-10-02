@@ -109,11 +109,8 @@ export function ProjectsTab() {
               <TableRow>
                 <TableHead>Project</TableHead>
                 <TableHead>Category</TableHead>
-                <TableHead>Status</TableHead>
                 <TableHead>Technologies</TableHead>
-                <TableHead>Views</TableHead>
                 <TableHead>Last Updated</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -131,11 +128,6 @@ export function ProjectsTab() {
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge className={getStatusColor(project.status)}>
-                      {project.status}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
                     <div className="flex flex-wrap gap-1">
                       {project.technologies.slice(0, 2).map((tech, index) => (
                         <Badge key={index} variant="secondary" className="text-xs">
@@ -149,32 +141,8 @@ export function ProjectsTab() {
                       )}
                     </div>
                   </TableCell>
-                  <TableCell>
-                    <div className="flex items-center gap-1">
-                      <Eye className="w-3 h-3 text-muted-foreground" />
-                      {project.views}
-                    </div>
-                  </TableCell>
                   <TableCell className="text-sm text-muted-foreground">
                     {project.lastUpdated}
-                  </TableCell>
-                  <TableCell className="text-right">
-                    <div className="flex items-center justify-end gap-2">
-                      <Button variant="ghost" size="sm">
-                        <ExternalLink className="w-4 h-4" />
-                      </Button>
-                      <Button variant="ghost" size="sm">
-                        <Edit className="w-4 h-4" />
-                      </Button>
-                      <Button 
-                        variant="ghost" 
-                        size="sm"
-                        onClick={() => handleDelete(project.id)}
-                        className="text-destructive hover:text-destructive"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </Button>
-                    </div>
                   </TableCell>
                 </TableRow>
               ))}

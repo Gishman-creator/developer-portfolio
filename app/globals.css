@@ -148,3 +148,7 @@ html {
 .minimal-hover-bg:hover {
   background-color: var(--muted);
 }
+
+.shadow-blurry {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+}

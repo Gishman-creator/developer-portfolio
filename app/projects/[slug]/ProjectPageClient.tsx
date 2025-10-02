@@ -2,11 +2,11 @@
 
 import { useState } from "react"
 import { notFound } from "next/navigation"
-import { projects } from "@/components/projects-section"
+import { projects } from "@/lib/projects"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ImageGalleryModal } from "@/components/image-gallery-modal"
+import { ProjectImageGrid } from "@/components/projects/project-image-grid"
 import {
   ExternalLink,
   Github,
@@ -18,7 +18,6 @@ import {
   Lightbulb,
   CheckCircle,
   AlertTriangle,
-  Grid3X3,
   Layers,
   Clock,
   User,
@@ -32,7 +31,6 @@ interface ProjectPageProps {
 }
 
 export default function ProjectPageClient({ params }: ProjectPageProps) {
-  const [isGalleryOpen, setIsGalleryOpen] = useState(false)
   const project = projects.find((p) => p.slug === params.slug)
 
   if (!project) {
@@ -45,154 +43,58 @@ export default function ProjectPageClient({ params }: ProjectPageProps) {
     <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/#projects">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Projects
-              </Link>
-            </Button>
-            <div className="flex gap-2">
-              {project.links.live && (
-                <Button size="sm" variant="outline" asChild>
-                  <a href={project.links.live} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Live Demo
-                  </a>
-                </Button>
-              )}
-              {project.links.github && (
-                <Button size="sm" variant="outline" asChild>
-                  <a href={project.links.github} target="_blank" rel="noopener noreferrer">
-                    <Github className="w-4 h-4 mr-2" />
-                    Source Code
-                  </a>
-                </Button>
-              )}
-            </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div className="flex items-center justify-between h-16">
+          <Button variant="ghost" size="sm" asChild className="hover:bg-white/10 hover:text-white md:hover:bg-transparent">
+            <Link href="/#projects">
+              <ArrowLeft className="w-4 h-4 md:mr-2" />
+              <span className="hidden md:inline">Back to Projects</span>
+            </Link>
+          </Button>
+          <div className="flex gap-2">
+            {project.links.live && (
+              <Button size="sm" variant="outline" asChild className="border-0 bg-transparent hover:bg-white/10 hover:text-white md:border md:bg-background md:hover:bg-white/10">
+                <Link href={project.links.live} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-4 h-4 md:mr-2" />
+                  <span className="hidden md:inline">Live Demo</span>
+                </Link>
+              </Button>
+            )}
+            {project.links.github && (
+              <Button size="sm" variant="outline" asChild className="border-0 bg-transparent hover:bg-white/10 hover:text-white md:border md:bg-background md:hover:bg-white/10">
+                <Link href={project.links.github} target="_blank" rel="noopener noreferrer">
+                  <Github className="w-4 h-4 md:mr-2" />
+                  <span className="hidden md:inline">Source Code</span>
+                </Link>
+              </Button>
+            )}
           </div>
+        </div>
         </div>
       </nav>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Hero Section */}
         <div className="mb-12">
-          <div className="flex items-center gap-4 mb-6">
+          <div className="flex flex-wrap items-center gap-4 mb-6">
             <Badge variant="secondary" className="text-sm">
               {project.category}
             </Badge>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1">
-                <Calendar className="w-4 h-4" />
-                {project.year}
-              </div>
-              <div className="flex items-center gap-1">
-                <Users className="w-4 h-4" />
-                {project.team}
-              </div>
+            <div className="flex items-center gap-1 text-sm text-muted-foreground">
+              <Calendar className="w-4 h-4" />
+              {project.year}
+            </div>
+            <div className="flex items-center gap-1 text-sm text-muted-foreground">
+              <Users className="w-4 h-4" />
+              {project.team}
             </div>
           </div>
 
           <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 text-balance">{project.title}</h1>
         </div>
 
-        <div className="mb-12">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 h-[400px] lg:h-[500px]">
-            {/* Main Image */}
-            <div
-              className="lg:col-span-3 relative overflow-hidden rounded-lg border border-border cursor-pointer group"
-              onClick={() => setIsGalleryOpen(true)}
-            >
-              <img
-                src={projectImages[0] || "/placeholder.svg"}
-                alt={project.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-            </div>
-
-            {/* Side Images - Only on larger screens */}
-            <div className="hidden lg:flex flex-col gap-4">
-              {projectImages.slice(1, 3).map((image, index) => (
-                <div
-                  key={index}
-                  className="flex-1 relative overflow-hidden rounded-lg border border-border cursor-pointer group"
-                  onClick={() => setIsGalleryOpen(true)}
-                >
-                  <img
-                    src={image || "/placeholder.svg"}
-                    alt={`${project.title} - View ${index + 2}`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-                </div>
-              ))}
-            </div>
-
-            {/* Show More Button - Only on small screens */}
-            <div className="lg:hidden mt-4">
-              <Button variant="outline" onClick={() => setIsGalleryOpen(true)} className="w-full">
-                <Grid3X3 className="w-4 h-4 mr-2" />
-                Show More Photos ({projectImages.length})
-              </Button>
-            </div>
-          </div>
-
-          {/* Show All Photos Button - Only on larger screens */}
-          <div className="hidden lg:block mt-4">
-            <Button
-              variant="outline"
-              onClick={() => setIsGalleryOpen(true)}
-              className="absolute bottom-4 right-4 bg-white/90 hover:bg-white"
-              style={{ position: "absolute", bottom: "1rem", right: "1rem" }}
-            >
-              <Grid3X3 className="w-4 h-4 mr-2" />
-              Show all photos
-            </Button>
-          </div>
-        </div>
+        <ProjectImageGrid projectImages={projectImages} projectTitle={project.title} />
 
         <div className="mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <Layers className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Project Type</p>
-                <p className="font-semibold text-foreground">{project.category}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <Clock className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Year</p>
-                <p className="font-semibold text-foreground">{project.year}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <User className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Team Size</p>
-                <p className="font-semibold text-foreground">{project.team}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <Code className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Technologies</p>
-                <p className="font-semibold text-foreground">{project.technologies.length} Used</p>
-              </div>
-            </div>
-          </div>
-
           <p className="text-xl text-muted-foreground max-w-4xl text-pretty leading-relaxed">
             {project.detailedDescription || project.description}
           </p>
@@ -201,26 +103,6 @@ export default function ProjectPageClient({ params }: ProjectPageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Key Achievements */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Target className="w-5 h-5 text-primary" />
-                  Key Achievements
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {project.highlights.map((highlight, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
-                      <span className="text-muted-foreground">{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-
             {/* Features Section */}
             {project.features && (
               <Card>
@@ -242,57 +124,6 @@ export default function ProjectPageClient({ params }: ProjectPageProps) {
                 </CardContent>
               </Card>
             )}
-
-            {/* Challenges Section */}
-            {project.challenges && (
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <AlertTriangle className="w-5 h-5 text-primary" />
-                    Technical Challenges
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    {project.challenges.map((challenge, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <AlertTriangle className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                        <span className="text-muted-foreground">{challenge}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Technical Implementation */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Lightbulb className="w-5 h-5 text-primary" />
-                  Technical Implementation
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Architecture & Design</h4>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Built with modern web technologies focusing on scalability, performance, and user experience. The
-                    application follows best practices for code organization, testing, and deployment.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Development Approach</h4>
-                  <ul className="space-y-1 text-sm text-muted-foreground">
-                    <li>• Responsive design optimized for all devices</li>
-                    <li>• Real-time data synchronization</li>
-                    <li>• Advanced analytics and reporting</li>
-                    <li>• Secure authentication and authorization</li>
-                    <li>• Automated testing and CI/CD pipeline</li>
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
           </div>
 
           {/* Sidebar */}
@@ -336,71 +167,73 @@ export default function ProjectPageClient({ params }: ProjectPageProps) {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Links */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Links</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {project.links.live && (
-                  <Button variant="outline" size="sm" className="w-full justify-start bg-transparent" asChild>
-                    <a href={project.links.live} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
-                    </a>
-                  </Button>
-                )}
-                {project.links.github && (
-                  <Button variant="outline" size="sm" className="w-full justify-start bg-transparent" asChild>
-                    <a href={project.links.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="w-4 h-4 mr-2" />
-                      Source Code
-                    </a>
-                  </Button>
-                )}
-              </CardContent>
-            </Card>
           </div>
         </div>
 
         {/* Related Projects */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold text-foreground mb-8">Related Projects</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-8">Other Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects
-              .filter((p) => p.slug !== project.slug && p.category === project.category)
               .slice(0, 3)
-              .map((relatedProject, index) => (
-                <Card key={index} className="group hover:border-primary/20 transition-all duration-300">
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={relatedProject.image || "/placeholder.svg"}
-                      alt={relatedProject.title}
-                      className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-base">{relatedProject.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <Button variant="outline" size="sm" className="w-full bg-transparent" asChild>
-                      <Link href={`/projects/${relatedProject.slug}`}>View Project</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+              .map((otherProject, index) => (
+                <Link key={index} href={`/projects/${otherProject.slug}`} className="block group">
+                  <Card className="bg-card border-border hover:border-primary/20 transition-all duration-300 hover:shadow-lg overflow-hidden cursor-pointer py-0">
+                    {/* Project Image */}
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={otherProject.image || "/placeholder.svg"}
+                        alt={otherProject.title}
+                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+                        {otherProject.links.live && (
+                          <div
+                            className="bg-white/90 hover:bg-white p-2 rounded-full transition-colors"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              window.open(otherProject.links.live, "_blank")
+                            }}
+                          >
+                            <ExternalLink className="w-4 h-4 text-gray-800" />
+                          </div>
+                        )}
+                        {otherProject.links.github && (
+                          <div
+                            className="bg-white/90 hover:bg-white p-2 rounded-full transition-colors"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              window.open(otherProject.links.github, "_blank")
+                            }}
+                          >
+                            <Github className="w-4 h-4 text-gray-800" />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    <CardContent className="p-6">
+                      <h3 className="text-lg font-semibold text-foreground mb-2 text-balance group-hover:text-primary transition-colors">
+                        {otherProject.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm mb-3 line-clamp-2 leading-relaxed">
+                        {otherProject.description}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <Badge variant="outline" className="text-xs bg-muted/50">
+                          {otherProject.category}
+                        </Badge>
+                        <span className="text-xs text-muted-foreground">{otherProject.year}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
           </div>
         </div>
       </div>
-
-      {/* Image Gallery Modal */}
-      <ImageGalleryModal
-        isOpen={isGalleryOpen}
-        onClose={() => setIsGalleryOpen(false)}
-        images={projectImages}
-        projectTitle={project.title}
-      />
     </div>
   )
 }

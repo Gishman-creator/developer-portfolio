@@ -31,7 +31,7 @@ const skillsData = [
 export function SkillsSection() {
   return (
     <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 text-balance font-display">
@@ -43,7 +43,7 @@ export function SkillsSection() {
           </p>
         </div>
 
-        <Card className="bg-card border-border hover:border-primary/20 transition-colors">
+        <Card className="bg-card border-border transition-colors">
           <CardHeader>
             <CardTitle className="text-xl font-semibold text-foreground text-center font-display">
               Tools & Technologies

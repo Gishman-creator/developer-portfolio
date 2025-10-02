@@ -243,24 +243,11 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {categories.map((category) => (
-            <Badge
-              key={category}
-              variant="outline"
-              className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
-            >
-              {category}
-            </Badge>
-          ))}
-        </div>
-
         {/* Projects Grid - Simplified cards with minimal information */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <Link key={index} href={`/projects/${project.slug}`} className="block group">
-              <Card className="bg-card border-border hover:border-primary/20 transition-all duration-300 hover:shadow-lg overflow-hidden cursor-pointer">
+              <Card className="bg-card border-border hover:border-primary/20 transition-all duration-300 hover:shadow-lg overflow-hidden cursor-pointer py-0">
                 {/* Project Image */}
                 <div className="relative overflow-hidden">
                   <img

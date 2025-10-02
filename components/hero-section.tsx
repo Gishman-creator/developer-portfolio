@@ -141,7 +141,7 @@ export function HeroSection() {
           </div>
 
           {/* Content Section - Right on desktop */}
-          <div className="flex-1 text-center lg:text-left lg:max-w-2xl bg-red-50">
+          <div className="flex-1 text-center lg:text-left lg:max-w-2xl">
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance font-display">
@@ -165,6 +165,7 @@ export function HeroSection() {
               <Button
                 variant="outline"
                 size="lg"
+                className="hover:text-white hover:bg-[#272727]"
                 asChild
               >
                 <a href="#projects">View My Work</a>

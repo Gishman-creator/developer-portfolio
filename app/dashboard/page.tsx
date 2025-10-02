@@ -40,7 +40,11 @@ export default function AdminDashboard() {
   }
 
   if (!isLoggedIn) {
-    return <div>Loading...</div>
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-background">
+        <img src="/logo.png" alt="Loading" className="w-auto h-12 object-cover" />
+      </div>
+    )
   }
 
   return (
@@ -53,11 +57,7 @@ export default function AdminDashboard() {
             <p className="text-muted-foreground">Manage your portfolio and contacts</p>
           </div>
           <div className="flex items-center gap-4">
-            <Button variant="outline" size="sm">
-              <Settings className="w-4 h-4 mr-2" />
-              Settings
-            </Button>
-            <Button variant="outline" size="sm" onClick={handleLogout}>
+            <Button variant="outline" size="sm" className="hover:text-white hover:bg-[#272727]" onClick={handleLogout}>
               <LogOut className="w-4 h-4 mr-2" />
               Logout
             </Button>
@@ -66,55 +66,6 @@ export default function AdminDashboard() {
       </header>
 
       <div className="p-6">
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Projects</CardTitle>
-              <FolderPlus className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{mockStats.totalProjects}</div>
-              <p className="text-xs text-muted-foreground">Active portfolio items</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Contact Messages</CardTitle>
-              <Mail className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{mockStats.totalContacts}</div>
-              <p className="text-xs text-muted-foreground">
-                {mockStats.pendingContacts} pending responses
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Portfolio Views</CardTitle>
-              <Eye className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{mockStats.totalViews}</div>
-              <p className="text-xs text-muted-foreground">This month</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Response Rate</CardTitle>
-              <MessageSquare className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">85%</div>
-              <p className="text-xs text-muted-foreground">Average response time: 2h</p>
-            </CardContent>
-          </Card>
-        </div>
-
         {/* Main Content */}
         <Tabs defaultValue="projects" className="space-y-6">
           <div className="flex items-center justify-between">
@@ -138,8 +89,8 @@ export default function AdminDashboard() {
         </Tabs>
       </div>
 
-      <AddProjectDialog 
-        open={showAddProject} 
+      <AddProjectDialog
+        open={showAddProject}
         onOpenChange={setShowAddProject}
       />
     </div>
